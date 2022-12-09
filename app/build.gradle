@@ -29,6 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -43,4 +46,15 @@ dependencies {
 
     //Splash screen
     implementation("androidx.core:core-splashscreen:1.0.0")
+
+    //Cicerone
+    implementation("com.github.terrakok:cicerone:7.1")
+
+    //Koin
+    implementation 'io.insert-koin:koin-android:3.1.2'
+
+    //MVVM
+    def mvvm_version = "2.5.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$mvvm_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$mvvm_version"
 }
