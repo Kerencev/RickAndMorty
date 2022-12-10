@@ -8,4 +8,6 @@
     <string name="species">Вид:</string>
     <string name="status">Статус:</string>
     <string name="gender">Пол:</string>
+    <string name="error_data_loading_info">Ошибка загрузки данных, проверьте соединение с интернетом</string>
+    <string name="reload">Перезагрузить</string>
 </resources>

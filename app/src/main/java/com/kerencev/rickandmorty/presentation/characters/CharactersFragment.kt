@@ -7,6 +7,8 @@ import com.kerencev.rickandmorty.databinding.FragmentCharactersBinding
 import com.kerencev.rickandmorty.domain.model.Character
 import com.kerencev.rickandmorty.presentation.base.BaseFragment
 import com.kerencev.rickandmorty.presentation.main.NavigationTab
+import com.kerencev.rickandmorty.utils.makeGone
+import com.kerencev.rickandmorty.utils.makeVisible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -50,15 +52,33 @@ class CharactersFragment :
                 showSuccess(state.data)
             }
             is State.Loading -> {
-
+                showLoading()
             }
             is State.Error -> {
-
+                showError()
             }
         }
     }
 
-    private fun showSuccess(data: List<Character>) {
+    private fun showSuccess(data: List<Character>) = with(binding) {
+        charactersRv.makeVisible()
+        charactersLinearError.makeGone()
+        charactersProgress.makeGone()
         adapter.submitList(data)
+    }
+
+    private fun showLoading() = with(binding) {
+        charactersProgress.makeVisible()
+        charactersRv.makeGone()
+        charactersLinearError.makeGone()
+    }
+
+    private fun showError() = with(binding) {
+        charactersLinearError.makeVisible()
+        charactersProgress.makeGone()
+        charactersRv.makeGone()
+        charactersBtnReload.setOnClickListener {
+            viewModel.getAllCharacters()
+        }
     }
 }
