@@ -9,4 +9,6 @@ class CharactersFragment :
         NavigationTab.CHARACTERS,
         FragmentCharactersBinding::inflate
     ) {
+
+    override fun onBackPressed() = viewModel.onBackPressed()
 }

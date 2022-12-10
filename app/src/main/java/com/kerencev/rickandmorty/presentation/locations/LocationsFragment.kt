@@ -9,4 +9,5 @@ class LocationsFragment :
         NavigationTab.LOCATIONS,
         FragmentLocationsBinding::inflate
     ) {
+    override fun onBackPressed() = viewModel.onBackPressed()
 }

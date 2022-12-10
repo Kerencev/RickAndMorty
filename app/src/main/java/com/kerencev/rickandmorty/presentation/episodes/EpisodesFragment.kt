@@ -9,4 +9,5 @@ class EpisodesFragment :
         NavigationTab.EPISODES,
         FragmentEpisodesBinding::inflate
     ) {
+    override fun onBackPressed() = viewModel.onBackPressed()
 }

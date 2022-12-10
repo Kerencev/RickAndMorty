@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationActivity {
         setContentView(binding.root)
         setUpNavigationClicks()
         if (savedInstanceState == null) {
-            viewModel.navigateTo(CharactersScreen)
+            viewModel.replaceStartScreen()
         }
     }
 
@@ -57,16 +57,10 @@ class MainActivity : AppCompatActivity(), NavigationActivity {
     }
 
     override fun setCurrentNavigationTab(tab: NavigationTab) {
-        binding.bottomNavigation.selectedItemId = when (tab) {
-            NavigationTab.CHARACTERS -> {
-                R.id.actionCharacters
-            }
-            NavigationTab.LOCATIONS -> {
-                R.id.actionLocation
-            }
-            NavigationTab.EPISODES -> {
-                R.id.actionEpisodes
-            }
+        when (tab) {
+            NavigationTab.CHARACTERS -> binding.bottomNavigation.menu.getItem(0).isChecked = true
+            NavigationTab.LOCATIONS -> binding.bottomNavigation.menu.getItem(1).isChecked = true
+            NavigationTab.EPISODES -> binding.bottomNavigation.menu.getItem(2).isChecked = true
         }
     }
 
