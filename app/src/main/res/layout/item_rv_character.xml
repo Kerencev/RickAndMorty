@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/character_item_padding">
+
+        <ImageView
+            android:id="@+id/characterItemIv"
+            android:layout_width="@dimen/character_item_iv_size"
+            android:layout_height="@dimen/character_item_iv_size"
+            android:contentDescription="@string/image_of_the_character"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/splash" />
+
+        <TextView
+            android:id="@+id/characterItemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/character_item_name_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterItemIv"
+            tools:text="Rick Sanchez" />
+
+        <TextView
+            android:id="@+id/characterItemSpecies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@id/characterItemName"
+            app:layout_constraintStart_toStartOf="@id/characterItemName"
+            app:layout_constraintTop_toBottomOf="@id/characterItemName"
+            tools:text="Вид: Human" />
+
+        <TextView
+            android:id="@+id/characterItemStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@id/characterItemName"
+            app:layout_constraintStart_toStartOf="@id/characterItemName"
+            app:layout_constraintTop_toBottomOf="@id/characterItemSpecies"
+            tools:text="Статус: Alive" />
+
+        <TextView
+            android:id="@+id/characterItemGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@id/characterItemName"
+            app:layout_constraintStart_toStartOf="@id/characterItemName"
+            app:layout_constraintTop_toBottomOf="@id/characterItemStatus"
+            tools:text="Пол: Female" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

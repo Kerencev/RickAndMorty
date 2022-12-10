@@ -3,4 +3,9 @@
     <string name="characters">Персонажи</string>
     <string name="episodes">Эпизоды</string>
     <string name="location">Локации</string>
+    <string name="image_of_the_character">Картинка персонажа</string>
+    <string name="name">Имя:</string>
+    <string name="species">Вид:</string>
+    <string name="status">Статус:</string>
+    <string name="gender">Пол:</string>
 </resources>
