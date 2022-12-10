@@ -3,4 +3,5 @@
     <dimen name="character_item_padding">8dp</dimen>
     <dimen name="character_item_iv_size">80dp</dimen>
     <dimen name="character_item_name_text_size">16sp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
 </resources>
