@@ -27,6 +27,9 @@ class CharactersFragment :
         super.onViewCreated(view, savedInstanceState)
         initFields()
         observeState()
+        binding.charactersSwipeRefresh.setOnRefreshListener {
+            viewModel.getAllCharacters()
+        }
     }
 
     override fun onBackPressed() = viewModel.onBackPressed()
@@ -42,6 +45,7 @@ class CharactersFragment :
 
     private fun observeState() {
         viewModel.liveData.observe(viewLifecycleOwner) { state ->
+            binding.charactersSwipeRefresh.isRefreshing = false
             renderData(state)
         }
     }
