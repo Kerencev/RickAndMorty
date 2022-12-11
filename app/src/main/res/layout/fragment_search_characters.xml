@@ -7,26 +7,30 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="0dp"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/search_character"
+                android:layout_height="wrap_content"
                 app:endIconDrawable="@drawable/icon_close"
                 app:endIconMode="custom"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null"
                 app:startIconDrawable="@drawable/icon_back">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInput"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:imeOptions="actionSearch"
                     android:inputType="text" />
 
@@ -41,10 +45,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:spanCount="2"
-        android:visibility="gone"/>
+        app:spanCount="2" />
 
     <ProgressBar
         android:id="@+id/searchCharactersProgress"

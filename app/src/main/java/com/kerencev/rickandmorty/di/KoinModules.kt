@@ -8,6 +8,7 @@ import com.kerencev.rickandmorty.domain.CharactersRepository
 import com.kerencev.rickandmorty.presentation.characters.CharactersViewModel
 import com.kerencev.rickandmorty.presentation.characters.search.SearchCharactersViewModel
 import com.kerencev.rickandmorty.presentation.main.MainViewModel
+import com.kerencev.rickandmorty.utils.SearchValidator
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -27,11 +28,13 @@ val mainModule = module {
 
 val charactersModule = module {
     single<CharactersRepository> { CharactersRepositoryImpl(apiService = get()) }
+    factory<SearchValidator> { SearchValidator.Base() }
     viewModel<CharactersViewModel> { CharactersViewModel.Base(router = get(), repository = get()) }
     viewModel<SearchCharactersViewModel> {
         SearchCharactersViewModel.Base(
             router = get(),
-            charactersRepository = get()
+            charactersRepository = get(),
+            searchValidator = get()
         )
     }
 }
