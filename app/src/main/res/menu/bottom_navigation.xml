@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/actionCharacters"
+        android:icon="@drawable/icon_characters"
         android:title="@string/characters"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/actionLocation"
+        android:icon="@drawable/icon_location"
         android:title="@string/location"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/actionEpisodes"
+        android:icon="@drawable/icon_episodes"
         android:title="@string/episodes"
         app:showAsAction="ifRoom" />
 </menu>
