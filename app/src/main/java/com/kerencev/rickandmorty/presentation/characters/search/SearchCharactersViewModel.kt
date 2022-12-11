@@ -1,5 +1,6 @@
 package com.kerencev.rickandmorty.presentation.characters.search
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.github.terrakok.cicerone.Router
 import com.kerencev.rickandmorty.domain.CharactersRepository
@@ -18,6 +19,7 @@ abstract class SearchCharactersViewModel(router: Router) : BaseViewModel<Charact
         override val liveData = MutableLiveData<State<Character>>()
 
         override fun getCharactersByName(name: String) {
+            liveData.value = State.Loading
             charactersRepository.getCharactersByName(name)
                 .subscribeByDefault()
                 .subscribe(
@@ -25,7 +27,8 @@ abstract class SearchCharactersViewModel(router: Router) : BaseViewModel<Charact
                         liveData.value = State.Success(it)
                     },
                     {
-
+                        Log.d("SearchCharactersViewModel", it.toString())
+                        liveData.value = State.Error
                     }
                 )
         }

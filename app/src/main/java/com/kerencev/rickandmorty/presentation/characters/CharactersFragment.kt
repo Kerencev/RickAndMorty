@@ -8,14 +8,13 @@ import com.kerencev.rickandmorty.domain.model.Character
 import com.kerencev.rickandmorty.navigation.SearchCharactersScreen
 import com.kerencev.rickandmorty.presentation.base.NavigationFragment
 import com.kerencev.rickandmorty.presentation.base.OnBackPressedListener
-import com.kerencev.rickandmorty.presentation.base.State
 import com.kerencev.rickandmorty.presentation.main.NavigationTab
 import com.kerencev.rickandmorty.utils.makeGone
 import com.kerencev.rickandmorty.utils.makeVisible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharactersFragment :
-    NavigationFragment<FragmentCharactersBinding>(
+    NavigationFragment<FragmentCharactersBinding, Character>(
         NavigationTab.CHARACTERS,
         FragmentCharactersBinding::inflate
     ), OnBackPressedListener {
@@ -33,6 +32,28 @@ class CharactersFragment :
     }
 
     override fun onBackPressed() = viewModel.onBackPressed()
+
+    override fun showSuccess(data: List<Character>) = with(binding) {
+        charactersRv.makeVisible()
+        charactersLinearError.makeGone()
+        charactersProgress.makeGone()
+        adapter.submitList(data)
+    }
+
+    override fun showLoading() = with(binding) {
+        charactersProgress.makeVisible()
+        charactersRv.makeGone()
+        charactersLinearError.makeGone()
+    }
+
+    override fun showError() = with(binding) {
+        charactersLinearError.makeVisible()
+        charactersProgress.makeGone()
+        charactersRv.makeGone()
+        charactersBtnReload.setOnClickListener {
+            viewModel.getAllCharacters()
+        }
+    }
 
     private fun initFields() {
         binding.charactersRv.adapter = adapter
@@ -57,42 +78,6 @@ class CharactersFragment :
         viewModel.liveData.observe(viewLifecycleOwner) { state ->
             binding.charactersSwipeRefresh.isRefreshing = false
             renderData(state)
-        }
-    }
-
-    private fun renderData(state: State<Character>) {
-        when (state) {
-            is State.Success -> {
-                showSuccess(state.data)
-            }
-            is State.Loading -> {
-                showLoading()
-            }
-            is State.Error -> {
-                showError()
-            }
-        }
-    }
-
-    private fun showSuccess(data: List<Character>) = with(binding) {
-        charactersRv.makeVisible()
-        charactersLinearError.makeGone()
-        charactersProgress.makeGone()
-        adapter.submitList(data)
-    }
-
-    private fun showLoading() = with(binding) {
-        charactersProgress.makeVisible()
-        charactersRv.makeGone()
-        charactersLinearError.makeGone()
-    }
-
-    private fun showError() = with(binding) {
-        charactersLinearError.makeVisible()
-        charactersProgress.makeGone()
-        charactersRv.makeGone()
-        charactersBtnReload.setOnClickListener {
-            viewModel.getAllCharacters()
         }
     }
 }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class ViewBindingFragment<T : ViewBinding>(
+abstract class BaseFragment<T : ViewBinding, V>(
     private val inflateBinding: (
         inflater: LayoutInflater, root: ViewGroup?, attachToRoot: Boolean
     ) -> T
@@ -15,6 +15,24 @@ abstract class ViewBindingFragment<T : ViewBinding>(
     protected var _binding: T? = null
     protected val binding: T
         get() = _binding!!
+
+    protected fun renderData(state: State<V>) {
+        when (state) {
+            is State.Success -> {
+                showSuccess(state.data)
+            }
+            is State.Loading -> {
+                showLoading()
+            }
+            is State.Error -> {
+                showError()
+            }
+        }
+    }
+
+    abstract fun showSuccess(data: List<V>)
+    abstract fun showLoading()
+    abstract fun showError()
 
     override fun onCreateView(
         inflater: LayoutInflater,

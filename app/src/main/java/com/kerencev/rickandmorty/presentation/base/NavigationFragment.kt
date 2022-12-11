@@ -7,12 +7,12 @@ import androidx.viewbinding.ViewBinding
 import com.kerencev.rickandmorty.presentation.main.NavigationActivity
 import com.kerencev.rickandmorty.presentation.main.NavigationTab
 
-abstract class NavigationFragment<T : ViewBinding>(
+abstract class NavigationFragment<T : ViewBinding, V>(
     private val tab: NavigationTab,
-    private val inflateBinding: (
+    inflateBinding: (
         inflater: LayoutInflater, root: ViewGroup?, attachToRoot: Boolean
     ) -> T
-) : ViewBindingFragment<T>(inflateBinding) {
+) : BaseFragment<T, V>(inflateBinding) {
 
     protected var navigationActivity: NavigationActivity? = null
 
