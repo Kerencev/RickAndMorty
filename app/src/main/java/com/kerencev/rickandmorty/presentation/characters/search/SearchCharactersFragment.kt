@@ -9,7 +9,6 @@ import com.kerencev.rickandmorty.domain.model.Character
 import com.kerencev.rickandmorty.presentation.base.BaseFragment
 import com.kerencev.rickandmorty.presentation.base.ErrorInputState
 import com.kerencev.rickandmorty.presentation.base.OnBackPressedListener
-import com.kerencev.rickandmorty.presentation.characters.CharactersAdapter
 import com.kerencev.rickandmorty.utils.hideKeyboard
 import com.kerencev.rickandmorty.utils.makeGone
 import com.kerencev.rickandmorty.utils.makeVisible
@@ -21,7 +20,7 @@ class SearchCharactersFragment :
     OnBackPressedListener {
 
     private val viewModel: SearchCharactersViewModel by viewModel()
-    private val adapter: CharactersAdapter by lazy { CharactersAdapter() }
+    private val adapter: SearchCharacterAdapter by lazy { SearchCharacterAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

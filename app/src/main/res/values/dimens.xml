@@ -5,4 +5,7 @@
     <dimen name="character_item_name_text_size">16sp</dimen>
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="error_info_width">200dp</dimen>
+    <dimen name="item_character_search_iv_margin">8dp</dimen>
+    <dimen name="item_character_search_tv_margin_start">4dp</dimen>
+    <dimen name="item_rv_character_search_padding_bottom">16dp</dimen>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -21,6 +22,7 @@
                 android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/search_character"
                 app:endIconDrawable="@drawable/icon_close"
                 app:endIconMode="custom"
                 app:errorEnabled="true"
@@ -46,9 +48,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:spanCount="2" />
+        tools:listitem="@layout/item_rv_character_search" />
 
     <ProgressBar
         android:id="@+id/searchCharactersProgress"
