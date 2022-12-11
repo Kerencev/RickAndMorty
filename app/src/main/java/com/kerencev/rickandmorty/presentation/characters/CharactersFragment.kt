@@ -5,18 +5,20 @@ import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.kerencev.rickandmorty.databinding.FragmentCharactersBinding
 import com.kerencev.rickandmorty.domain.model.Character
-import com.kerencev.rickandmorty.presentation.base.BaseFragment
+import com.kerencev.rickandmorty.navigation.SearchCharactersScreen
+import com.kerencev.rickandmorty.presentation.base.NavigationFragment
+import com.kerencev.rickandmorty.presentation.base.OnBackPressedListener
+import com.kerencev.rickandmorty.presentation.base.State
 import com.kerencev.rickandmorty.presentation.main.NavigationTab
 import com.kerencev.rickandmorty.utils.makeGone
 import com.kerencev.rickandmorty.utils.makeVisible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class CharactersFragment :
-    BaseFragment<FragmentCharactersBinding>(
+    NavigationFragment<FragmentCharactersBinding>(
         NavigationTab.CHARACTERS,
         FragmentCharactersBinding::inflate
-    ) {
+    ), OnBackPressedListener {
 
     private val viewModel: CharactersViewModel by viewModel()
     private val adapter: CharactersAdapter by lazy {
@@ -27,9 +29,7 @@ class CharactersFragment :
         super.onViewCreated(view, savedInstanceState)
         initFields()
         observeState()
-        binding.charactersSwipeRefresh.setOnRefreshListener {
-            viewModel.getAllCharacters()
-        }
+        setAllClickListeners()
     }
 
     override fun onBackPressed() = viewModel.onBackPressed()
@@ -43,6 +43,16 @@ class CharactersFragment :
         binding.charactersRv.addItemDecoration(dividerItemDecoration)
     }
 
+    private fun setAllClickListeners() = with(binding) {
+        charactersSwipeRefresh.setOnRefreshListener {
+            viewModel.getAllCharacters()
+        }
+        charactersActionSearch.setOnClickListener {
+            viewModel.navigateTo(SearchCharactersScreen)
+            navigationActivity?.showBottomNavigation(isShow = false)
+        }
+    }
+
     private fun observeState() {
         viewModel.liveData.observe(viewLifecycleOwner) { state ->
             binding.charactersSwipeRefresh.isRefreshing = false
@@ -50,7 +60,7 @@ class CharactersFragment :
         }
     }
 
-    private fun renderData(state: State) {
+    private fun renderData(state: State<Character>) {
         when (state) {
             is State.Success -> {
                 showSuccess(state.data)

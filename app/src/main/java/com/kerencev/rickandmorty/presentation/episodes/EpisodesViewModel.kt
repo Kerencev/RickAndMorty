@@ -1,7 +1,6 @@
 package com.kerencev.rickandmorty.presentation.episodes
 
-import com.github.terrakok.cicerone.Router
-import com.kerencev.rickandmorty.presentation.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-class EpisodesViewModel(private val router: Router) : BaseViewModel(router) {
+class EpisodesViewModel() : ViewModel() {
 }

@@ -9,9 +9,12 @@ class CharactersRepositoryImpl(private val apiService: ApiService) : CharactersR
 
     override fun getAllCharacters(): Single<List<Character>> {
         return apiService.getAllCharacters()
-            .map {
-                mapToListOfCharacters(it)
-            }
+            .map { mapToListOfCharacters(it) }
+    }
+
+    override fun getCharactersByName(name: String): Single<List<Character>> {
+        return apiService.getCharactersByName(name)
+            .map { mapToListOfCharacters(it) }
     }
 
     private fun mapToListOfCharacters(allCharactersResponse: AllCharactersResponse): List<Character> {

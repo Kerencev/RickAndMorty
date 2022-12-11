@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.kerencev.rickandmorty.presentation.characters.CharactersFragment
+import com.kerencev.rickandmorty.presentation.characters.search.SearchCharactersFragment
 import com.kerencev.rickandmorty.presentation.episodes.EpisodesFragment
 import com.kerencev.rickandmorty.presentation.locations.LocationsFragment
 
@@ -22,5 +23,11 @@ object LocationsScreen : FragmentScreen {
 object EpisodesScreen : FragmentScreen {
     override fun createFragment(factory: FragmentFactory): Fragment {
         return EpisodesFragment()
+    }
+}
+
+object SearchCharactersScreen : FragmentScreen {
+    override fun createFragment(factory: FragmentFactory): Fragment {
+        return SearchCharactersFragment()
     }
 }

@@ -6,6 +6,7 @@ import com.kerencev.rickandmorty.data.remote.ApiService
 import com.kerencev.rickandmorty.data.remote.CharactersRepositoryImpl
 import com.kerencev.rickandmorty.domain.CharactersRepository
 import com.kerencev.rickandmorty.presentation.characters.CharactersViewModel
+import com.kerencev.rickandmorty.presentation.characters.search.SearchCharactersViewModel
 import com.kerencev.rickandmorty.presentation.main.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -27,6 +28,12 @@ val mainModule = module {
 val charactersModule = module {
     single<CharactersRepository> { CharactersRepositoryImpl(apiService = get()) }
     viewModel<CharactersViewModel> { CharactersViewModel.Base(router = get(), repository = get()) }
+    viewModel<SearchCharactersViewModel> {
+        SearchCharactersViewModel.Base(
+            router = get(),
+            charactersRepository = get()
+        )
+    }
 }
 
 private fun createApiService(): ApiService = Retrofit.Builder()

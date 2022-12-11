@@ -8,6 +8,7 @@ import android.view.animation.AnticipateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.isVisible
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.kerencev.rickandmorty.R
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity(), NavigationActivity {
             NavigationTab.LOCATIONS -> binding.bottomNavigation.menu.getItem(1).isChecked = true
             NavigationTab.EPISODES -> binding.bottomNavigation.menu.getItem(2).isChecked = true
         }
+    }
+
+    override fun showBottomNavigation(isShow: Boolean) {
+        binding.bottomNavigation.isVisible = isShow
     }
 
     private fun setUpSplashScreen() {
