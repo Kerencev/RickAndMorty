@@ -6,9 +6,9 @@ import android.view.inputmethod.EditorInfo
 import com.kerencev.rickandmorty.R
 import com.kerencev.rickandmorty.databinding.FragmentSearchCharactersBinding
 import com.kerencev.rickandmorty.domain.model.Character
-import com.kerencev.rickandmorty.presentation.base.BaseFragment
-import com.kerencev.rickandmorty.presentation.base.ErrorInputState
-import com.kerencev.rickandmorty.presentation.base.OnBackPressedListener
+import com.kerencev.rickandmorty.presentation.base.fragment.OnBackPressedListener
+import com.kerencev.rickandmorty.presentation.base.fragment.SearchFragment
+import com.kerencev.rickandmorty.presentation.base.state.ErrorInputState
 import com.kerencev.rickandmorty.utils.hideKeyboard
 import com.kerencev.rickandmorty.utils.makeGone
 import com.kerencev.rickandmorty.utils.makeVisible
@@ -16,7 +16,7 @@ import com.kerencev.rickandmorty.utils.showKeyBoard
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchCharactersFragment :
-    BaseFragment<FragmentSearchCharactersBinding, Character>(FragmentSearchCharactersBinding::inflate),
+    SearchFragment<FragmentSearchCharactersBinding, Character>(FragmentSearchCharactersBinding::inflate),
     OnBackPressedListener {
 
     private val viewModel: SearchCharactersViewModel by viewModel()
@@ -70,9 +70,14 @@ class SearchCharactersFragment :
     }
 
     private fun renderInputErrorMessage(errorInputState: ErrorInputState) = with(binding) {
-        textInputLayout.error = when (errorInputState) {
+        textInputLayout.hint = when (errorInputState) {
             ErrorInputState.EMPTY_INPUT -> resources.getString(R.string.empty_input_character_error)
             ErrorInputState.ONLY_LATIN -> resources.getString(R.string.latin_error)
+            ErrorInputState.HIDE_ERROR -> resources.getString(R.string.search_character)
+        }
+        textInputLayout.error = when (errorInputState) {
+            ErrorInputState.EMPTY_INPUT -> resources.getString(R.string.holder_error)
+            ErrorInputState.ONLY_LATIN -> resources.getString(R.string.holder_error)
             ErrorInputState.HIDE_ERROR -> null
         }
     }
@@ -89,6 +94,7 @@ class SearchCharactersFragment :
         }
         textInputLayout.setEndIconOnClickListener {
             textInput.text?.clear()
+            textInput.showKeyBoard(requireContext())
         }
     }
 }

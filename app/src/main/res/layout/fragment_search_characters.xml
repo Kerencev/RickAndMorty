@@ -8,20 +8,18 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:elevation="0dp"
-        app:elevation="0dp">
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/white">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|enterAlways">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="@string/search_character"
                 app:endIconDrawable="@drawable/icon_close"
                 app:endIconMode="custom"
@@ -32,7 +30,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInput"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:imeOptions="actionSearch"
                     android:inputType="text" />
 
@@ -45,8 +43,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchCharactersRv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingBottom="@dimen/item_rv_character_search_padding_bottom"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

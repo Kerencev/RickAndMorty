@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import com.github.terrakok.cicerone.Router
 import com.kerencev.rickandmorty.domain.CharactersRepository
 import com.kerencev.rickandmorty.domain.model.Character
-import com.kerencev.rickandmorty.presentation.base.BaseViewModel
-import com.kerencev.rickandmorty.presentation.base.ErrorInputState
-import com.kerencev.rickandmorty.presentation.base.State
+import com.kerencev.rickandmorty.presentation.base.state.ErrorInputState
+import com.kerencev.rickandmorty.presentation.base.state.ListDataState
+import com.kerencev.rickandmorty.presentation.base.viewmodel.BaseViewModel
 import com.kerencev.rickandmorty.utils.SearchValidator
 import com.kerencev.rickandmorty.utils.subscribeByDefault
 
@@ -25,7 +25,7 @@ abstract class SearchCharactersViewModel(router: Router) : BaseViewModel<Charact
     ) :
         SearchCharactersViewModel(router) {
 
-        override val liveData = MutableLiveData<State<Character>>()
+        override val liveData = MutableLiveData<ListDataState<Character>>()
         override val inputLiveData = MutableLiveData<ErrorInputState>()
 
         override fun getCharactersByName(name: String) {
@@ -38,17 +38,17 @@ abstract class SearchCharactersViewModel(router: Router) : BaseViewModel<Charact
                 return
             }
 
-            liveData.value = State.Loading
+            liveData.value = ListDataState.Loading
             charactersRepository.getCharactersByName(name)
                 .subscribeByDefault()
                 .subscribe(
                     {
                         inputLiveData.value = ErrorInputState.HIDE_ERROR
-                        liveData.value = State.Success(it)
+                        liveData.value = ListDataState.Success(it)
                     },
                     {
                         Log.d("SearchCharactersViewModel", it.toString())
-                        liveData.value = State.Error
+                        liveData.value = ListDataState.Error
                     }
                 )
         }

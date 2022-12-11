@@ -16,7 +16,7 @@ import com.kerencev.rickandmorty.databinding.ActivityMainBinding
 import com.kerencev.rickandmorty.navigation.CharactersScreen
 import com.kerencev.rickandmorty.navigation.EpisodesScreen
 import com.kerencev.rickandmorty.navigation.LocationsScreen
-import com.kerencev.rickandmorty.presentation.base.OnBackPressedListener
+import com.kerencev.rickandmorty.presentation.base.fragment.OnBackPressedListener
 import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

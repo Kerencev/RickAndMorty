@@ -6,15 +6,15 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.kerencev.rickandmorty.databinding.FragmentCharactersBinding
 import com.kerencev.rickandmorty.domain.model.Character
 import com.kerencev.rickandmorty.navigation.SearchCharactersScreen
-import com.kerencev.rickandmorty.presentation.base.NavigationFragment
-import com.kerencev.rickandmorty.presentation.base.OnBackPressedListener
+import com.kerencev.rickandmorty.presentation.base.fragment.BottomTabFragment
+import com.kerencev.rickandmorty.presentation.base.fragment.OnBackPressedListener
 import com.kerencev.rickandmorty.presentation.main.NavigationTab
 import com.kerencev.rickandmorty.utils.makeGone
 import com.kerencev.rickandmorty.utils.makeVisible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharactersFragment :
-    NavigationFragment<FragmentCharactersBinding, Character>(
+    BottomTabFragment<FragmentCharactersBinding, Character>(
         NavigationTab.CHARACTERS,
         FragmentCharactersBinding::inflate
     ), OnBackPressedListener {
@@ -70,7 +70,6 @@ class CharactersFragment :
         }
         charactersActionSearch.setOnClickListener {
             viewModel.navigateTo(SearchCharactersScreen)
-            navigationActivity?.showBottomNavigation(isShow = false)
         }
     }
 

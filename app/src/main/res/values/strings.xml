@@ -13,5 +13,6 @@
     <string name="icon_search">Иконка поиска</string>
     <string name="search_character">Поиск персонажа</string>
     <string name="empty_input_character_error">Введите имя персонжа</string>
-    <string name="latin_error">Ввод должен содержать только латинские буквы</string>
+    <string name="latin_error">Только латинские буквы</string>
+    <string name="holder_error">.</string>
 </resources>

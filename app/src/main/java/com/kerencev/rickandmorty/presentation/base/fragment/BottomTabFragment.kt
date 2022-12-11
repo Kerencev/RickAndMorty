@@ -1,4 +1,4 @@
-package com.kerencev.rickandmorty.presentation.base
+package com.kerencev.rickandmorty.presentation.base.fragment
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,12 +7,12 @@ import androidx.viewbinding.ViewBinding
 import com.kerencev.rickandmorty.presentation.main.NavigationActivity
 import com.kerencev.rickandmorty.presentation.main.NavigationTab
 
-abstract class NavigationFragment<T : ViewBinding, V>(
+abstract class BottomTabFragment<T : ViewBinding, V>(
     private val tab: NavigationTab,
     inflateBinding: (
         inflater: LayoutInflater, root: ViewGroup?, attachToRoot: Boolean
     ) -> T
-) : BaseFragment<T, V>(inflateBinding) {
+) : ListDataFragment<T, V>(inflateBinding) {
 
     protected var navigationActivity: NavigationActivity? = null
 

@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/item_rv_character_search_padding_bottom">
+        android:paddingTop="@dimen/item_rv_character_search_padding_bottom">
 
         <ImageView
             android:id="@+id/itemCharacterSearchIv"
