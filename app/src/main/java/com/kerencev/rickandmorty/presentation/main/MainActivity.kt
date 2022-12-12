@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.animation.AnticipateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -77,10 +76,9 @@ class MainActivity : AppCompatActivity(), NavigationActivity {
                         splashScreenProvider.view,
                         View.TRANSLATION_Y,
                         0f,
-                        -splashScreenProvider.view.height.toFloat(),
+                        splashScreenProvider.view.height.toFloat(),
                     ).apply {
                         duration = SPLASH_DURATION
-                        interpolator = AnticipateInterpolator()
                         doOnEnd {
                             splashScreenProvider.remove()
                         }

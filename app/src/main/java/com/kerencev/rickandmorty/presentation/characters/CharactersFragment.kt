@@ -5,6 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.kerencev.rickandmorty.databinding.FragmentCharactersBinding
 import com.kerencev.rickandmorty.domain.model.Character
+import com.kerencev.rickandmorty.navigation.FilterCharactersScreen
 import com.kerencev.rickandmorty.navigation.SearchCharactersScreen
 import com.kerencev.rickandmorty.presentation.base.fragment.BottomTabFragment
 import com.kerencev.rickandmorty.presentation.base.fragment.OnBackPressedListener
@@ -70,6 +71,9 @@ class CharactersFragment :
         }
         charactersActionSearch.setOnClickListener {
             viewModel.navigateTo(SearchCharactersScreen)
+        }
+        charactersActionFilter.setOnClickListener {
+            viewModel.navigateTo(FilterCharactersScreen)
         }
     }
 

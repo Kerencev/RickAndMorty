@@ -1,6 +1,7 @@
 package com.kerencev.rickandmorty.presentation.characters
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.github.terrakok.cicerone.Router
 import com.kerencev.rickandmorty.domain.CharactersRepository
@@ -10,7 +11,9 @@ import com.kerencev.rickandmorty.presentation.base.viewmodel.BaseViewModel
 import com.kerencev.rickandmorty.utils.disposeBy
 import com.kerencev.rickandmorty.utils.subscribeByDefault
 
-abstract class CharactersViewModel(router: Router) : BaseViewModel<Character>(router) {
+abstract class CharactersViewModel(router: Router) : BaseViewModel(router) {
+
+    abstract val liveData: LiveData<ListDataState<Character>>
 
     abstract fun getAllCharacters()
 

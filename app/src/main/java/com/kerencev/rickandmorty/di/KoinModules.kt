@@ -6,6 +6,7 @@ import com.kerencev.rickandmorty.data.remote.ApiService
 import com.kerencev.rickandmorty.data.remote.CharactersRepositoryImpl
 import com.kerencev.rickandmorty.domain.CharactersRepository
 import com.kerencev.rickandmorty.presentation.characters.CharactersViewModel
+import com.kerencev.rickandmorty.presentation.characters.filter.FilterCharacterViewModel
 import com.kerencev.rickandmorty.presentation.characters.search.SearchCharactersViewModel
 import com.kerencev.rickandmorty.presentation.main.MainViewModel
 import com.kerencev.rickandmorty.utils.SearchValidator
@@ -35,6 +36,11 @@ val charactersModule = module {
             router = get(),
             charactersRepository = get(),
             searchValidator = get()
+        )
+    }
+    viewModel<FilterCharacterViewModel> {
+        FilterCharacterViewModel.Base(
+            router = get()
         )
     }
 }

@@ -12,7 +12,9 @@ import com.kerencev.rickandmorty.presentation.base.viewmodel.BaseViewModel
 import com.kerencev.rickandmorty.utils.SearchValidator
 import com.kerencev.rickandmorty.utils.subscribeByDefault
 
-abstract class SearchCharactersViewModel(router: Router) : BaseViewModel<Character>(router) {
+abstract class SearchCharactersViewModel(router: Router) : BaseViewModel(router) {
+
+    abstract val liveData: LiveData<ListDataState<Character>>
 
     abstract val inputLiveData: LiveData<ErrorInputState>
 

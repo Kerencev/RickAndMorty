@@ -15,4 +15,16 @@
     <string name="empty_input_character_error">Введите имя персонжа</string>
     <string name="latin_error">Только латинские буквы</string>
     <string name="holder_error">.</string>
+    <string name="name_of_character">Имя персонажа</string>
+    <string name="species_hint">Вид</string>
+    <string name="status_hint">Статус</string>
+    <string name="gender_hint">Пол</string>
+    <string name="filter_characters">Фильтрация персонажей</string>
+    <string name="alive">Живой</string>
+    <string name="dead">Мёртвый</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="male">Мужчина</string>
+    <string name="female">Женщина</string>
+    <string name="genderless">Бесполый</string>
+    <string name="apply">Применить</string>
 </resources>

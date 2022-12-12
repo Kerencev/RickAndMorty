@@ -12,8 +12,9 @@
         <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/icon_episodes.xml" value="0.221" />
         <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/drawable/icon_location.xml" value="0.221" />
         <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_characters.xml" value="0.264" />
+        <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_characters.xml" value="0.33" />
         <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_episodes.xml" value="0.3515625" />
+        <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_filter_characters.xml" value="0.33" />
         <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_locations.xml" value="0.3515625" />
         <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/fragment_search_characters.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Keren/AndroidStudioProjects/RickandMorty/app/src/main/res/layout/item_rv_character.xml" value="0.264" />
