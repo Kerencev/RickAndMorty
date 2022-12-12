@@ -17,6 +17,16 @@ class CharactersRepositoryImpl(private val apiService: ApiService) : CharactersR
             .map { mapToListOfCharacters(it) }
     }
 
+    override fun getCharactersByFilter(
+        name: String,
+        species: String,
+        status: String,
+        gender: String
+    ): Single<List<Character>> {
+        return apiService.getCharactersByFilter(name, species, status, gender)
+            .map { mapToListOfCharacters(it) }
+    }
+
     private fun mapToListOfCharacters(allCharactersResponse: AllCharactersResponse): List<Character> {
         val result = mutableListOf<Character>()
         allCharactersResponse.results.forEach { characterResponse ->

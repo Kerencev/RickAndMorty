@@ -12,4 +12,12 @@ interface ApiService {
 
     @GET("character/")
     fun getCharactersByName(@Query("name") name: String): Single<AllCharactersResponse>
+
+    @GET("character/")
+    fun getCharactersByFilter(
+        @Query("name") name: String,
+        @Query("species") species: String,
+        @Query("status") status: String,
+        @Query("gender") gender: String,
+    ): Single<AllCharactersResponse>
 }
