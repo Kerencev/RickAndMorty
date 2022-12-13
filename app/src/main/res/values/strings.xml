@@ -27,4 +27,6 @@
     <string name="female">Женщина</string>
     <string name="genderless">Бесполый</string>
     <string name="apply">Применить</string>
+    <string name="filters">Фильтры</string>
+    <string name="reset_filters">Сбросить фильтры</string>
 </resources>

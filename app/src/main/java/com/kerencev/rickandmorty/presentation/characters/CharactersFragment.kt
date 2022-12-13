@@ -2,6 +2,7 @@ package com.kerencev.rickandmorty.presentation.characters
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.kerencev.rickandmorty.databinding.FragmentCharactersBinding
 import com.kerencev.rickandmorty.domain.model.Character
@@ -9,6 +10,7 @@ import com.kerencev.rickandmorty.navigation.FilterCharactersScreen
 import com.kerencev.rickandmorty.navigation.SearchCharactersScreen
 import com.kerencev.rickandmorty.presentation.base.fragment.BottomTabFragment
 import com.kerencev.rickandmorty.presentation.base.fragment.OnBackPressedListener
+import com.kerencev.rickandmorty.presentation.characters.filter.FilterCharactersFragment
 import com.kerencev.rickandmorty.presentation.main.NavigationTab
 import com.kerencev.rickandmorty.utils.makeGone
 import com.kerencev.rickandmorty.utils.makeVisible
@@ -54,7 +56,7 @@ class CharactersFragment :
         charactersShimmer.makeGone()
         charactersRv.makeGone()
         charactersBtnReload.setOnClickListener {
-            viewModel.getAllCharacters()
+            viewModel.getCharacters()
         }
     }
 
@@ -69,20 +71,45 @@ class CharactersFragment :
 
     private fun setAllClickListeners() = with(binding) {
         charactersSwipeRefresh.setOnRefreshListener {
-            viewModel.getAllCharacters()
+            viewModel.getCharacters(isFiltered = false)
         }
         charactersActionSearch.setOnClickListener {
             viewModel.navigateTo(SearchCharactersScreen)
         }
         charactersActionFilter.setOnClickListener {
-            viewModel.navigateTo(FilterCharactersScreen)
+            viewModel.navigateTo(
+                FilterCharactersScreen(
+                    name = viewModel.getFilterName(),
+                    species = viewModel.getFilterSpecies(),
+                    status = viewModel.getFilterStatus(),
+                    gender = viewModel.getFilterGender()
+                )
+            )
         }
+
     }
 
     private fun observeState() {
         viewModel.liveData.observe(viewLifecycleOwner) { state ->
             binding.charactersSwipeRefresh.isRefreshing = false
             renderData(state)
+        }
+        viewModel.filtersCountData.observe(viewLifecycleOwner) { filtersCount ->
+            if (filtersCount > 0) {
+                binding.charactersFiltersCount.text = filtersCount.toString()
+                binding.charactersFiltersCount.makeVisible()
+            } else {
+                binding.charactersFiltersCount.makeGone()
+            }
+        }
+        setFragmentResultListener(FilterCharactersFragment.FILTER_FRAGMENT_RESULT_KEY) { _, bundle ->
+            viewModel.getCharacters(
+                name = bundle.getString(FilterCharactersFragment.KEY_NAME) ?: "",
+                species = bundle.getString(FilterCharactersFragment.KEY_SPECIES) ?: "",
+                status = bundle.getString(FilterCharactersFragment.KEY_STATUS) ?: "",
+                gender = bundle.getString(FilterCharactersFragment.KEY_GENDER) ?: "",
+                isFiltered = true
+            )
         }
     }
 }

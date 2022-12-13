@@ -58,6 +58,7 @@ dependencies {
     def mvvm_version = "2.5.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$mvvm_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$mvvm_version"
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
 
     //RxJava
     def rx_version = "3.0.0"

@@ -17,4 +17,10 @@
     <dimen name="shimmer_tv_height">16dp</dimen>
     <dimen name="shimmer_tv_width_small">120dp</dimen>
     <dimen name="shimmer_tv_margin_top">4dp</dimen>
+    <dimen name="characters_action_search_margin_end">12dp</dimen>
+    <dimen name="oval_corner_radius">100dp</dimen>
+    <dimen name="characters_action_search_padding">8dp</dimen>
+    <dimen name="characters_action_filter_margin_end">56dp</dimen>
+    <dimen name="characters_filters_count_margin_end">140dp</dimen>
+    <dimen name="characters_filters_count_padding">8dp</dimen>
 </resources>

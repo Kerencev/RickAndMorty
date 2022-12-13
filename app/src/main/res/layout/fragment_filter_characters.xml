@@ -16,6 +16,7 @@
             android:id="@+id/filterCharactersToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:menu="@menu/filter_characters_menu"
             app:navigationIcon="@drawable/icon_back"
             app:title="@string/filter_characters"
             app:titleTextColor="@color/white" />

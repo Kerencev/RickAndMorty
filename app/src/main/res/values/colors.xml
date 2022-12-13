@@ -12,4 +12,5 @@
     <color name="light_blue_900">#01579B</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="shimmer_color">#AEAEAE</color>
+    <color name="red">#DF2121</color>
 </resources>
