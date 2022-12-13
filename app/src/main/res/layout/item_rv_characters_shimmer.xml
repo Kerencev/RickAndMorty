@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_columnWeight="1"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/character_item_padding">
+
+    <View
+        android:id="@+id/characterItemIv"
+        android:layout_width="@dimen/character_item_iv_size"
+        android:layout_height="@dimen/character_item_iv_size"
+        android:background="@drawable/background_iv_character_shimmer" />
+
+    <View
+        android:id="@+id/characterItemName"
+        android:layout_width="@dimen/shimmer_tv_width_medium"
+        android:layout_height="@dimen/shimmer_tv_height"
+        android:layout_marginTop="@dimen/shimmer_tv_margin_top"
+        android:background="@drawable/background_tv_characters_shimmer" />
+
+    <View
+        android:id="@+id/characterItemSpecies"
+        android:layout_width="@dimen/shimmer_tv_width_small"
+        android:layout_height="@dimen/shimmer_tv_height"
+        android:layout_marginTop="@dimen/shimmer_tv_margin_top"
+        android:background="@drawable/background_tv_characters_shimmer" />
+
+    <View
+        android:id="@+id/characterItemStatus"
+        android:layout_width="@dimen/shimmer_tv_width_small"
+        android:layout_height="@dimen/shimmer_tv_height"
+        android:layout_marginTop="@dimen/shimmer_tv_margin_top"
+        android:background="@drawable/background_tv_characters_shimmer" />
+
+    <View
+        android:id="@+id/characterItemGender"
+        android:layout_width="@dimen/shimmer_tv_width_small"
+        android:layout_height="@dimen/shimmer_tv_height"
+        android:layout_marginTop="@dimen/shimmer_tv_margin_top"
+        android:background="@drawable/background_tv_characters_shimmer" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

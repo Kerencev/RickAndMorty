@@ -13,4 +13,8 @@
     <dimen name="filter_characters_btn_apply_margin_horizontal">20dp</dimen>
     <dimen name="filter_characters_btn_apply_margin_bottom">20dp</dimen>
     <dimen name="filter_characters_radio_group_margin_horizontal">8dp</dimen>
+    <dimen name="shimmer_tv_width_medium">160dp</dimen>
+    <dimen name="shimmer_tv_height">16dp</dimen>
+    <dimen name="shimmer_tv_width_small">120dp</dimen>
+    <dimen name="shimmer_tv_margin_top">4dp</dimen>
 </resources>

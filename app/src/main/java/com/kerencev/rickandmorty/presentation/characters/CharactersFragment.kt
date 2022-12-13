@@ -37,19 +37,21 @@ class CharactersFragment :
     override fun showSuccess(data: List<Character>) = with(binding) {
         charactersRv.makeVisible()
         charactersLinearError.makeGone()
-        charactersProgress.makeGone()
+        charactersShimmer.makeGone()
+        charactersShimmer.stopShimmer()
         adapter.submitList(data)
     }
 
     override fun showLoading() = with(binding) {
-        charactersProgress.makeVisible()
+        charactersShimmer.makeVisible()
+        charactersShimmer.startShimmer()
         charactersRv.makeGone()
         charactersLinearError.makeGone()
     }
 
     override fun showError() = with(binding) {
         charactersLinearError.makeVisible()
-        charactersProgress.makeGone()
+        charactersShimmer.makeGone()
         charactersRv.makeGone()
         charactersBtnReload.setOnClickListener {
             viewModel.getAllCharacters()
